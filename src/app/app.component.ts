@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private bookService: BookService, 
     private act: ActivatedRoute,) {
-    this.ImageBaseData = '../assets/images/book-icon.png';
+      this.ImageBaseData = '../assets/images/book-icon.png';
+      this.isUpdate = false;
     }
 
   ngOnInit() {
