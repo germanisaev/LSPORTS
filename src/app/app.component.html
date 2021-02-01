@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+      <button class="btn btn-primary" (click)="AddBook()">Add Book</button>
+    </div>
+    <div class="col-md-11">
+      <h1 class="text-center">Book Library</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <div id="input-container">
+          <input style="border: none;" type="text" id="search-book" class="form-control" name="searchBook"
+            aria-describedby="search-book" [(ngModel)]="searchBook" placeholder="Enter text to search" autofocus>
+        </div>
+      </div>
+      <ul *ngIf="books.length > 0">
+        <li *ngFor="let book of books | filterAll: searchBook"> <!-- | listFilter: searchBook-->
+          <div class="">{{book.AuthorName}}&nbsp;{{book.BookName}}&nbsp;<a (click)="editBook(book.id)"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;<a (click)="removeBook(book.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <img src="{{ImageBaseData}}" class="img-responsive" alt="Selected Image">
+    </div>
+    <div class="col-md-4">
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Author Name</label>
+          <input type="text" formControlName="AuthorName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.AuthorName.errors }" />
+          <div *ngIf="submitted && f.AuthorName.errors" class="invalid-feedback">
+            <div *ngIf="f.AuthorName.errors.required">Author Name is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Book Name</label>
+          <input type="text" formControlName="BookName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.BookName.errors }" />
+          <div *ngIf="submitted && f.BookName.errors" class="invalid-feedback">
+            <div *ngIf="f.BookName.errors.required">Book Name is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Publication Date</label>
+          <input type="date" formControlName="PublicationDate" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.PublicationDate.errors }" />
+          <div *ngIf="submitted && f.PublicationDate.errors" class="invalid-feedback">
+            <div *ngIf="f.PublicationDate.errors.required">Publication Date is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Cover Photo</label>
+          <input #fileInput style="display: none" type="file" formControlName="CoverPhoto" class="form-control"
+             (change)="handleFileInput($event.target.files)" accept=".png, .jpg, .jpeg" />
+            <button class="btn btn-primary form-control" (click)="fileInput.click()">Choose Photo</button>
+        </div>
+        <div class="form-group">
+          <label for="name">Catalog Number</label>
+          <input type="text" formControlName="CatalogNumber" class="form-control"
+             />
+            <!--
+              [ngClass]="{ 'is-invalid': submitted && f.CatalogNumber.errors }"
+          <div *ngIf="submitted && f.CatalogNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.CatalogNumber.errors.required">Catalog Number is required</div>
+          </div>
+          -->
+        </div>
+        <div class="form-group">
+          <button type="submit" [disabled]="submitted" class="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
