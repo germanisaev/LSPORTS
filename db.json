@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "books": [
+    {
+      "AuthorName": "German Isaev",
+      "BookName": "Angular Tutorial",
+      "PublicationDate": "2021-02-01",
+      "CoverPhoto": "C:\\fakepath\\roxette.jpg",
+      "CatalogNumber": "A0001",
+      "id": 1
+    },
+    {
+      "AuthorName": "David",
+      "BookName": "Army",
+      "PublicationDate": "2021-02-10",
+      "CoverPhoto": "C:\\fakepath\\Frame 9.png",
+      "CatalogNumber": "A001",
+      "id": 2
+    },
+    {
+      "AuthorName": "Elizabeth",
+      "BookName": "Figma Tutorial",
+      "PublicationDate": "2021-02-11",
+      "CoverPhoto": "C:\\fakepath\\Frame 9.png",
+      "CatalogNumber": "F0001",
+      "id": 3
+    }
+  ]
+}
